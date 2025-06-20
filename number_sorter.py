@@ -9,16 +9,15 @@ from typing import Callable, Generator
 
 def generator_numbers(text: str) -> Generator[float, None, None]:
     """
-    Extracts all valid float numbers from the input text and yields them one by one.
-    Parameters:
-        text (str): The input string containing float numbers separated by spaces.
+    Extracts all real numbers (income amounts) from a given text string and yields them one by one.   
+    Args:
+        text (str): The input string containing income values.
     Yields:
-        float: Each valid float number found in the text.
+        float: Each found income value as a float.
     """
-    # Regular expression pattern for float numbers with space boundaries
-    pattern = r'\b\d+\.\d+\b'
-    for match in re.findall(pattern, text):
-        yield float(match)
+    pattern = r'(?<= )\d+\.\d+(?= )'
+    for match in re.finditer(pattern, text):
+        yield float(match.group())
 
 def sum_profit(text: str, func: Callable[[str], Generator[float, None, None]]) -> float:
     """

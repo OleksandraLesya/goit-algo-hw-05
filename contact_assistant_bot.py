@@ -60,8 +60,7 @@ def add_contact(args: list, contacts: dict) -> str:
     Raises:
         ValueError: If the number of arguments is not 2.
     """
-    if len(args) != 2:
-        raise ValueError
+
     name, phone = args
 
     contacts[name] = phone
@@ -80,8 +79,7 @@ def change_contact(args: list, contacts: dict) -> str:
         ValueError: If the number of arguments is not 2.
         KeyError: If the contact name does not exist in the contacts dictionary.
     """
-    if len(args) != 2:
-        raise ValueError
+
     name, phone = args
 
     if name not in contacts:
